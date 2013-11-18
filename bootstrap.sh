@@ -18,7 +18,7 @@ then
     # Update and begin installing some utility tools
     apt-get -y update
 
-	apt-get install -y python-software-properties
+    apt-get install -y python-software-properties
     apt-get install -y vim git curl unzip
     apt-get install -y memcached build-essential
 
@@ -60,6 +60,6 @@ then
 
     mkdir /var/log/geoDESA
 
-	# Run it
-    #node /var/www/geoDESA/app.js
+    # Run it
+    node /var/www/geoDESA/app.js
 fi
