@@ -27,7 +27,6 @@ then
 
     # Install npm
     curl https://npmjs.org/install.sh | sh
-    #apt-get install -y npm
     
     # Install latest stable version of mongo
     apt-get install mongodb-10gen
@@ -70,13 +69,5 @@ fi
     echo ""
     echo "#####################################"
 
-<<<<<<< HEAD
 	# Run it
     node /var/www/geoDESA/app.js
-=======
-    mkdir /var/log/geoDESA
-
-    # Run it
-    node /var/www/geoDESA/app.js
-fi
->>>>>>> a918eecb75609f3dfbf85420f2a274b62aa144b0
