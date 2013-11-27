@@ -4,7 +4,7 @@ Vagrant files to build a Vagrant box aimed to start a development/test box for g
 
 Requisites:
 
-	- Install vagrant: http://www.varantup.com
+	- Install vagrant: http://www.vagrantup.com
 	- Install VirtualBox: https://www.virtualbox.org
 
 1- Clone this repository
