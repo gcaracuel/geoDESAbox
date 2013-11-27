@@ -5,7 +5,7 @@
 sudo su
 
 # Just a simple way of checking if you we need to install everything
-if [ ! -d "/var/log/geoDESA" ]
+if [ ! -d "/var/tmp/geoDESArequirements" ]
 then
     # Add mongo to apt
     apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
@@ -22,10 +22,12 @@ then
     apt-get install -y vim git curl unzip
     apt-get install -y memcached build-essential
 
-    #Visit https://launchpad.net/~chris-lea/+archive/node.js for update
+    # Visit https://launchpad.net/~chris-lea/+archive/node.js for update
     apt-get install -y nodejs=0.10.22-1chl1~precise1
 
-    apt-get install -y npm
+    # Install npm
+    curl https://npmjs.org/install.sh | sh
+    #apt-get install -y npm
     
     # Install latest stable version of mongo
     apt-get install mongodb-10gen
@@ -33,21 +35,31 @@ then
     # Symlink our host www to the guest /var/www folder
     ln -s /vagrant/www /var/www
 
-    # Get the code and unzip it
-    wget https://github.com/truki/geoDESA/archive/master.zip --quiet
-    unzip -q master.zip -d /var/www 
-    mv /var/www/geoDESA-master /var/www/geoDESA
-    rm master.zip
+    touch /var/tmp/geoDESArequirements
+
+    echo "#####################################"
+    echo ""
+    echo "geoDESA requirements are ready. Now get de code!"
+    echo ""
+    echo "#####################################"
+fi
+
+
+	# Clone geoDESA repo from Github
+	cd /var/www/
+	git clone https://github.com/truki/geoDESA.git
+
+
 
     #### Descargamos testdata de collections e importamos cada una de ellas
     #wget https://raw.github.com/gcaracuel/geoDESABox/master/testdata.json --quiet
     #mongoimport --db <aqui db> --colletion <aqui collection>
     #rm testdata.json
 
-    cd /var/www/geoDESA/
-    # Install node modules
-    npm install
 
+    cd /var/www/geoDESA
+    # Install node modules
+    sudo npm install -g
 
     echo ""
     echo ""
@@ -58,8 +70,5 @@ then
     echo ""
     echo "#####################################"
 
-    mkdir /var/log/geoDESA
-
 	# Run it
-    #node /var/www/geoDESA/app.js
-fi
+    node /var/www/geoDESA/app.js
