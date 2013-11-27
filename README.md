@@ -23,4 +23,4 @@ Requisites:
 
 It will prompt that has finished and will guide you the URL to access the app.
 
-REMEMBER: use "vagrant halt" to stop
+REMEMBER: use "vagrant halt" to stop. use "vagrant reload" to destroy it.
